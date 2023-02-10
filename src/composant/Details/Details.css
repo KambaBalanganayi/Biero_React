@@ -1,0 +1,23 @@
+.title{
+    padding-left: 10px;
+}
+
+.main{
+    display: flex;
+    flex-direction:row;
+    padding-left: 10px;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 0 10px;
+}
+
+.description{
+    padding-bottom: 20px;
+}
+
+.comments{
+    padding: 10px 0 0 10px;
+}
