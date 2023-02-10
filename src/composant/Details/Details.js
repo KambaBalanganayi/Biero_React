@@ -1,6 +1,7 @@
 import './Details.css';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { GiWolfHead } from "react-icons/gi";
 
 
 export default function Details({estConnecte, courriel}){
@@ -95,14 +96,13 @@ export default function Details({estConnecte, courriel}){
     return (
 
         <>
-        <h1 className='title'>{produit.nom}</h1>
-        <section className='main'>
-
+        <section className='title'>
+            <h1>{produit.nom}</h1>
             <strong>{message}</strong>
-                
-                <div>
-                    <img src='https://picsum.photos/450/300' alt='biere_image'></img>
-                </div>
+        </section>
+        <section className='main'>
+            <img src='https://picsum.photos/450/300' alt='biere_image' className='beerImage'></img>
+
             <section className='details'>
                 <section className='description'>
                     <strong>Description : </strong>                
@@ -116,12 +116,16 @@ export default function Details({estConnecte, courriel}){
             </section>
         </section>
         <section className='comments'>
-        <h3>Commentaires</h3>
-            {commentaires.map(unCommentaire=>
-                <p>{unCommentaire.commentaire}</p>
-                
-            )}
-            {formulaire}
+            <section className='beerComments'>
+            <h3>Commentaires</h3>
+                {commentaires.map(unCommentaire=>
+                    <p><GiWolfHead/> - {unCommentaire.commentaire}</p>
+                )}
+            </section>
+
+            <section className='formulaire'>
+                {formulaire}
+            </section>
         </section>
 
 

@@ -8,6 +8,10 @@
     padding-left: 10px;
 }
 
+.beerImage{
+    border: solid black 3px;
+}
+
 .details{
     display: flex;
     flex-direction: column;
@@ -19,5 +23,10 @@
 }
 
 .comments{
+    display: flex;
     padding: 10px 0 0 10px;
+}
+
+.formulaire{
+    margin-left: 130px;
 }
