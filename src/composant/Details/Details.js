@@ -1,7 +1,7 @@
 import './Details.css';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { GiWolfHead } from "react-icons/gi";
+import { IoBeer } from "react-icons/io5";
 
 
 export default function Details({estConnecte, courriel}){
@@ -19,14 +19,14 @@ export default function Details({estConnecte, courriel}){
         fetch(api_url+id)
         .then(data=>data.json())
         .then(data=>{
-            console.log(data);
+            //console.log(data);
             setProduit(data.data);
             });
 
         fetch(api_url+id+'/commentaire')
         .then(data=>data.json())
         .then(data=>{
-            console.log(data.data);
+            //console.log(data.data);
             setCommentaires(data.data);
 
         });
@@ -34,14 +34,14 @@ export default function Details({estConnecte, courriel}){
         fetch(api_url+id+'/note')
         .then(data=>data.json())
         .then(data=>{
-            console.log(data.data);
+            //console.log(data.data);
             setNote(data.data);
 
         });
 
     }, []);
 
-
+    
     const handleChange = (evt)=>{
         setInputValues({...inputValue, [evt.target.name]: evt.target.value});
     };
@@ -61,7 +61,6 @@ export default function Details({estConnecte, courriel}){
             .then(response=>response.json())
             .then(data=>{
                 console.log(data);
-                //fctRappel(data)
             })
     };
 
@@ -119,7 +118,7 @@ export default function Details({estConnecte, courriel}){
             <section className='beerComments'>
             <h3>Commentaires</h3>
                 {commentaires.map(unCommentaire=>
-                    <p><GiWolfHead/> - {unCommentaire.commentaire}</p>
+                    <p><IoBeer/> - {unCommentaire.commentaire}</p>
                 )}
             </section>
 
