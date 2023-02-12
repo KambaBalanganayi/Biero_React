@@ -13,7 +13,8 @@ export default function Details({estConnecte, courriel}){
     const [commentaires, setCommentaires] = useState([]);
     const [note, setNote] = useState([]);
 
-    const [inputValue, setInputValues] = useState([]);
+    const [inputComment, setCommentValues] = useState([]);
+    const [inputRating, setRatingValues] = useState([]);
 
     useEffect(()=>{
         fetch(api_url+id)
@@ -41,21 +42,44 @@ export default function Details({estConnecte, courriel}){
 
     }, []);
 
+    // useEffect(()=>{
+    //     console.log(inputRating);
+    // }, [inputRating]);
+
     
     const handleChange = (evt)=>{
-        setInputValues({...inputValue, [evt.target.name]: evt.target.value});
+        setCommentValues({...inputComment, [evt.target.name]: evt.target.value});
+        setRatingValues({...inputRating, [evt.target.name]: evt.target.value});
     };
 
-    const handleSubmit = (evt) => {
+    const handleSubmitComment = (evt) => {
         evt.preventDefault();
         let entete = new Headers();
         entete.append("Content-Type", "application/json");
         entete.append("Authorization", "Basic " + btoa("biero:biero"));
 
-        console.log(inputValue);
+        console.log(inputComment);
         fetch('http://127.0.0.1:8000/webservice/php/biere/'+id+"/commentaire", {
             method:"PUT",
-            body:JSON.stringify(inputValue),
+            body:JSON.stringify(inputComment),
+            headers : entete
+        })
+            .then(response=>response.json())
+            .then(data=>{
+                console.log(data);
+            })
+    };
+    
+    const handleSubmitRating = (evt) => {
+        evt.preventDefault();
+        let entete = new Headers();
+        entete.append("Content-Type", "application/json");
+        entete.append("Authorization", "Basic " + btoa("biero:biero"));
+
+        console.log(inputRating);
+        fetch('http://127.0.0.1:8000/webservice/php/biere/'+id+"/note", {
+            method:"PUT",
+            body:JSON.stringify(inputRating),
             headers : entete
         })
             .then(response=>response.json())
@@ -65,15 +89,33 @@ export default function Details({estConnecte, courriel}){
     };
 
     let message='';
-    let formulaire="";
+    let formulaireComment="";
+    let formulaireRating="";
     if(estConnecte){
         message = <p>Connecté en tant que : {courriel} </p>
-        formulaire = <form onSubmit={handleSubmit}>
-                        <h3>Ajouter un commentaire : </h3>
-                        <label for="commentaire">Commentaire</label>
-                        <textarea name='commentaire' onChange={handleChange}></textarea>
-                        <button type='submit'>Ajouter</button>
-                    </form>
+        formulaireComment = <form onSubmit={handleSubmitComment} className="commentForm">
+                                <h3>Ajouter un commentaire : </h3>
+                                <label for="commentaire"></label>
+                                <textarea name='commentaire' onChange={handleChange}></textarea>
+                                <button type='submit'>Ajouter</button>
+                            </form>
+
+        formulaireRating = <form onSubmit={handleSubmitRating} className="ratingForm">
+                                <h3>Ajouter une note : </h3>
+                                <div>
+                                <input type="radio" name="note" value="1" onMouseDown={handleChange}></input>
+                                <input type="radio" name="note" value="2" onMouseDown={handleChange}></input>
+                                <input type="radio" name="note" value="3" onMouseDown={handleChange}></input>
+                                <input type="radio" name="note" value="4" onMouseDown={handleChange}></input>
+                                <input type="radio" name="note" value="5" onMouseDown={handleChange}></input>
+                                <input type="radio" name="note" value="6" onMouseDown={handleChange}></input>
+                                <input type="radio" name="note" value="7" onMouseDown={handleChange}></input>
+                                <input type="radio" name="note" value="8" onMouseDown={handleChange}></input>
+                                <input type="radio" name="note" value="9" onMouseDown={handleChange}></input>
+                                <input type="radio" name="note" value="10" onMouseDown={handleChange}></input>
+                                </div>
+                                <button type='submit'>Ajouter</button>
+                            </form>
     }
 
     // setCommentaires(evt){
@@ -123,7 +165,10 @@ export default function Details({estConnecte, courriel}){
             </section>
 
             <section className='formulaire'>
-                {formulaire}
+                {formulaireComment}
+            </section>
+            <section className='rating'>
+                {formulaireRating}
             </section>
         </section>
 

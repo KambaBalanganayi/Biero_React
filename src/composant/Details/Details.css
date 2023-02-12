@@ -28,5 +28,23 @@
 }
 
 .formulaire{
-    margin-left: 130px;
+    margin-left: 70px;
+}
+
+.rating{
+    margin-left: 70px;
+}
+
+.commentForm{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.ratingForm{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }

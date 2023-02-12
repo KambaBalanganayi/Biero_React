@@ -8,20 +8,27 @@ export default class Produit extends React.Component{
     }
     render(){
         
-        let prix = ""
+        let brasserie = ""
         if(this.props.estConnecte){
-            prix =  <>
-                        <p>Prix : {this.props.prix}</p>
-                        <p>Prix : {this.props.biere.prix}</p>
-                    </>;
+            brasserie =  <>
+                        {/* <p>Prix : {this.props.brasserie}</p> */}
+                        <p>Prix : {this.props.biere.brasserie}</p>
+                        </>;
         }
         return (
-            <article className="produit">
-                <p>Nom : {this.props.nom}</p>
-                <p>Nom : {this.props.biere.nom}</p>
-                {prix}
+            <section className='uneBiere'>
                 
-            </article>
+                    <img src='https://picsum.photos/150/150' alt='biere_image' className='uneImageBiere'></img>
+                
+                <article className="produit">
+                {/* <p>Nom : {this.props.nom}</p> */}
+                <p><strong>Nom : </strong>{this.props.biere.nom}</p>
+                <p><strong>Brasserie : </strong>{this.props.biere.brasserie}</p>
+                {brasserie}
+                
+                </article>
+            </section>
+
         );
     }
 }

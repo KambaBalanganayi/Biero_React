@@ -8,18 +8,18 @@ export default class ListeProduit extends React.Component{
     super()
 
     this.state = {produits: [
-      { id: 1,
-        nom : "Produit 1",
-        prix : 15.50
-      },
-      { id: 2,
-        nom : "Produit 2",
-        prix : 25.50
-      },
-      { id: 3,
-        nom : "Produit 3",
-        prix : 10.50
-      },
+      // { id: 1,
+      //   nom : "Produit 1",
+      //   brasserie : ''
+      // },
+      // { id: 2,
+      //   nom : "Produit 2",
+      //   brasserie : ''
+      // },
+      // { id: 3,
+      //   nom : "Produit 3",
+      //   brasserie :''
+      // },
 
     ], 
     messageErreur : "Test"}
@@ -44,8 +44,7 @@ export default class ListeProduit extends React.Component{
       return ( 
         //<Produit nom={unProduit.nom} id={unProduit.id_biere} description={unProduit.description} />
         <Link key={unProduit.id_biere} to={"/produit/"+unProduit.id_biere}>
-        <Produit estConnecte={this.props.estConnecte}  biere={unProduit} {...unProduit} /> // Choisir sa façon, pas les deux...
-
+        <Produit estConnecte={this.props.estConnecte}  biere={unProduit} {...unProduit} />
         </Link>
 
       );
@@ -58,8 +57,8 @@ export default class ListeProduit extends React.Component{
 
     return (
       <div className="liste">
-        <h1>liste</h1>
-        <p>Compteur : {this.props.compteur}</p>
+        <h1>Liste</h1>
+        {/* <p>Compteur : {this.props.compteur}</p> */}
         {/*}<p>{this.state.messageErreur}</p>{*/}
         <section className='mesProduits'>
           {aProduits}
