@@ -10,6 +10,7 @@
 
 .beerImage{
     border: solid black 3px;
+    border-radius: 20px;
 }
 
 .details{

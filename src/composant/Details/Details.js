@@ -2,6 +2,7 @@ import './Details.css';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { IoBeer } from "react-icons/io5";
+import { HiOutlineSpeakerphone } from "react-icons/hi";
 
 
 export default function Details({estConnecte, courriel}){
@@ -17,7 +18,10 @@ export default function Details({estConnecte, courriel}){
     const [inputComment, setCommentValues] = useState([]);
     const [inputRating, setRatingValues] = useState([]);
 
+    const [error, setError] = useState([]);
+
     //Fetchs des données du composant Détails
+
     useEffect(()=>{
         fetch(api_url+id)
         .then(data=>data.json())
@@ -44,9 +48,6 @@ export default function Details({estConnecte, courriel}){
 
     }, []);
 
-    // useEffect(()=>{
-    //     setNote(inputRating.note);
-    // }, [inputRating.note]);
 
     //Fonction de traitement des changements de valeur des champs inputComment(commentaires) et inputRating(note)
     const handleChange = (evt)=>{
@@ -62,7 +63,7 @@ export default function Details({estConnecte, courriel}){
         entete.append("Authorization", "Basic " + btoa("biero:biero"));
 
         console.log(inputComment);
-        fetch('http://127.0.0.1:8000/webservice/php/biere/'+id+"/commentaire", {
+        fetch(api_url+id+"/commentaire", {
             method:"PUT",
             body:JSON.stringify(inputComment),
             headers : entete
@@ -70,9 +71,15 @@ export default function Details({estConnecte, courriel}){
             .then(response=>response.json())
             .then(data=>{
                 console.log(data);
+
+                 //Utilitaire pour mettre a jour les commentaires apres un ajout
+                fetch(api_url+id+"/commentaire")
+                .then(data=>data.json())
+                .then(data=>{
+                    
+                    setCommentaires(data.data)
+                })
             })
-            //Utilitaire pour mettre a jour les commentaires apres un ajout
-            setCommentaires([...commentaires, inputComment])
     };
     
     //Logique pour l'ajout d'une note en utilisant l'API biero
@@ -83,7 +90,7 @@ export default function Details({estConnecte, courriel}){
         entete.append("Authorization", "Basic " + btoa("biero:biero"));
 
         console.log(inputRating);
-        fetch('http://127.0.0.1:8000/webservice/php/biere/'+id+"/note", {
+        fetch(api_url+id+"/note", {
             method:"PUT",
             body:JSON.stringify(inputRating),
             headers : entete
@@ -91,7 +98,16 @@ export default function Details({estConnecte, courriel}){
             .then(response=>response.json())
             .then(data=>{
                 console.log(data);
+                
+                 //Utilitaire pour mettre a jour les notes apres un ajout
+                fetch(api_url+id+"/note") 
+                .then(data=>data.json())
+                .then(data=>{
+                    setNote(data.data)
+                })
+                    
             })
+            
     };
 
     //Initialisation de variables utilises dans le rendu du composant Details
@@ -106,7 +122,7 @@ export default function Details({estConnecte, courriel}){
         //Formulaire d'ajout d'un commentaire sur une biere
         formulaireComment = <form onSubmit={handleSubmitComment} className="commentForm">
                                 <h3>Ajouter un commentaire : </h3>
-                                <textarea name='commentaire' onChange={handleChange}></textarea>
+                                <textarea name='commentaire' onChange={handleChange} required></textarea>
                                 <button type='submit'>Ajouter</button>
                             </form>
 
@@ -129,21 +145,6 @@ export default function Details({estConnecte, courriel}){
                             </form>
     }
 
-    // setCommentaires(evt){
-    //     console.log(evt.target.value);
-    //     let commentaire = evt.target.value;
-    //     let valide;
-    //     if(commentaire !=""){
-    //         valide = true;
-    //     }else{
-    //         valide =false;
-    //     }
-
-    //     this.setState({
-    //         commentaireValide : valide,
-    //         commentaire : commentaire
-    //     })
-    // }
 
     return (
 
@@ -163,7 +164,7 @@ export default function Details({estConnecte, courriel}){
                 
                 <section className='note'>
                     <strong>Note : </strong>
-                    <p>{note} / 10</p>
+                    <p>{note.note} / 10</p>
                 </section>
             </section>
         </section>
@@ -171,7 +172,7 @@ export default function Details({estConnecte, courriel}){
             <section className='beerComments'>
             <h3>Commentaires</h3>
                 {commentaires.map((unCommentaire, index)=>
-                    <p key={index}><IoBeer/> - {unCommentaire.commentaire}</p>
+                    <p key={index}><IoBeer/> - {unCommentaire.commentaire} - <HiOutlineSpeakerphone/> <em>{unCommentaire.courriel}</em></p>
                 )}
             </section>
 
