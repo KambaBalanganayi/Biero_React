@@ -7,3 +7,54 @@
 .mesProduits {
     color: #000;
 }
+
+@media screen and (max-width: 768px){
+    .title {
+        padding-left: 10px;
+        padding-top: 10px;
+        color: rgb(53, 25, 13);
+    }
+    .comments{
+        display: flex;
+        padding: 10px 0 0 10px;
+        color: rgb(53, 25, 13);
+        flex-direction: column;
+    }
+    
+    .formulaire{
+        padding-top: 20px;
+        margin: 0;
+        display: flex;
+    }
+
+    .rating{
+        padding-top: 20px;
+        padding-bottom: 50px;
+        margin: 0;
+        display: flex;
+    }
+
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px){
+
+    .liste h1{
+        margin: 50px 0 0 45px;
+    }
+    
+
+}
+
+@media screen and (max-width: 360px){
+
+    .liste h1{
+        margin: 100px 0 0 90px;
+    }
+    
+
+}

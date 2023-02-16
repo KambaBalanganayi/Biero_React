@@ -1,4 +1,5 @@
 import './Details.css';
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { IoBeer } from "react-icons/io5";
@@ -18,8 +19,6 @@ export default function Details({estConnecte, courriel}){
     const [inputComment, setCommentValues] = useState([]);
     const [inputRating, setRatingValues] = useState([]);
 
-    const [error, setError] = useState([]);
-
     //Fetchs des données du composant Détails
 
     useEffect(()=>{
@@ -33,7 +32,7 @@ export default function Details({estConnecte, courriel}){
         fetch(api_url+id+'/commentaire')
         .then(data=>data.json())
         .then(data=>{
-            //console.log(data.data);
+            console.log(data.data);
             setCommentaires(data.data);
 
         });
@@ -41,12 +40,12 @@ export default function Details({estConnecte, courriel}){
         fetch(api_url+id+'/note')
         .then(data=>data.json())
         .then(data=>{
-            //console.log(data.data);
+            console.log(data);
             setNote(data.data);
 
         });
 
-    }, []);
+    }, [id]);
 
 
     //Fonction de traitement des changements de valeur des champs inputComment(commentaires) et inputRating(note)
@@ -76,7 +75,6 @@ export default function Details({estConnecte, courriel}){
                 fetch(api_url+id+"/commentaire")
                 .then(data=>data.json())
                 .then(data=>{
-                    
                     setCommentaires(data.data)
                 })
             })
@@ -130,16 +128,16 @@ export default function Details({estConnecte, courriel}){
         formulaireRating = <form onSubmit={handleSubmitRating} className="ratingForm">
                                 <h3>Ajouter une note : </h3>
                                 <div>
-                                <input type="radio" name="note" value="1" onMouseDown={handleChange}></input>
-                                <input type="radio" name="note" value="2" onMouseDown={handleChange}></input>
-                                <input type="radio" name="note" value="3" onMouseDown={handleChange}></input>
-                                <input type="radio" name="note" value="4" onMouseDown={handleChange}></input>
-                                <input type="radio" name="note" value="5" onMouseDown={handleChange}></input>
-                                <input type="radio" name="note" value="6" onMouseDown={handleChange}></input>
-                                <input type="radio" name="note" value="7" onMouseDown={handleChange}></input>
-                                <input type="radio" name="note" value="8" onMouseDown={handleChange}></input>
-                                <input type="radio" name="note" value="9" onMouseDown={handleChange}></input>
-                                <input type="radio" name="note" value="10" onMouseDown={handleChange}></input>
+                                <input type="radio" name="note" value="1" onMouseDown={handleChange}/><span>-1-</span>
+                                <input type="radio" name="note" value="2" onMouseDown={handleChange}/><span>-2-</span>
+                                <input type="radio" name="note" value="3" onMouseDown={handleChange}/><span>-3-</span>
+                                <input type="radio" name="note" value="4" onMouseDown={handleChange}/><span>-4-</span>
+                                <input type="radio" name="note" value="5" onMouseDown={handleChange}/><span>-5-</span>
+                                <input type="radio" name="note" value="6" onMouseDown={handleChange}/><span>-6-</span>
+                                <input type="radio" name="note" value="7" onMouseDown={handleChange}/><span>-7-</span>
+                                <input type="radio" name="note" value="8" onMouseDown={handleChange}/><span>-8-</span>
+                                <input type="radio" name="note" value="9" onMouseDown={handleChange}/><span>-9-</span>
+                                <input type="radio" name="note" value="10" onMouseDown={handleChange}/><span>-10</span>
                                 </div>
                                 <button type='submit'>Ajouter</button>
                             </form>

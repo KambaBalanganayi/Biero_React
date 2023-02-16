@@ -4,9 +4,9 @@
     flex-direction: column;
     flex-wrap: nowrap;
 }
-.pageAccueil .contenu .bandeau {
+.pageAccueil .contenu .bandeau{
     display: flex;
-    height: calc(3 * var(--unite));
+    height: calc(4 * var(--unite));
     background-color: #fff8e1;
     flex-direction: column;
     justify-content: center;
@@ -23,8 +23,8 @@
     text-decoration: none;
 }
 .pageAccueil .contenu .bandeau .btnAction:hover {
-    color: #ddd;
-    border-color: #ddd;
+    color: #272626;
+    border-color: #484747;
     transition: border-color 200ms, color 200ms;
 }
 .pageAccueil .contenu .arguments {
@@ -37,4 +37,43 @@
 .pageAccueil .contenu .arguments div {
     height: 200px;
     width: 200px;
+}
+
+.galleryBtn{
+    justify-content: center;
+    display: flex;
+    padding: 20px;
+    background-color: blanchedalmond;
+}
+
+
+.arguments{
+    background-color: blanchedalmond;
+    padding: 15px;
+}
+
+.argument{
+    background-color: #162b4d;
+    padding: 10px;
+    margin: 15px;
+}
+
+.raison{
+    padding-top: 10px;
+}
+
+
+@media screen and (max-width: 360px){
+
+    .pageAccueil .contenu .arguments{
+        padding-left: 0;
+        padding-right: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+
 }

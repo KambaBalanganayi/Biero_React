@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link, NavLink} from 'react-router-dom'
 import './Entete.css';
+import beerLogo from '../Details/img/beer-mug-logo.svg';
 
 export default class Entete extends React.Component{
   constructor(props){
@@ -15,8 +16,9 @@ export default class Entete extends React.Component{
   setCourriel(evt){
     console.log(evt.target.value);
     let courriel= evt.target.value;
+    let regEx = /^\S+@\S+\.\S+$/;
     let valide;
-    if(courriel !=""){// validation a completer
+    if(courriel !=="" && regEx.test(courriel)){
       valide = true;
     }else{
       valide =false;
@@ -40,7 +42,12 @@ export default class Entete extends React.Component{
             <div className="top-nav">
               <div className="barre">
                 <Link className="logo" to="/">
-                  B<span>iero</span>
+
+                <div className='boiteLogo'>
+                  <img src={beerLogo} alt="logoBiere" className='imgLogo'/>
+                  <div className='textLogo'>B<span>iero </span></div>
+                </div>
+
                 </Link>
                 <span className="flex-spacer"></span>
                 <p className="menu-mobile"></p>
@@ -51,9 +58,9 @@ export default class Entete extends React.Component{
                   <NavLink to="/produit">Les produits</NavLink>
                 </li>
               </ul>
-              <section>
-              <p>Courriel: <input disabled={this.props.estConnecte} type="email" onChange={this.setCourriel}></input></p>
-                <button disabled={!this.state.courrielValide} onClick={this.seConnecter}>{btnConnecter}</button>
+              <section className='inputCourriel'>
+              <span>Courriel: <input disabled={this.props.estConnecte} type="email" onChange={this.setCourriel}></input></span>
+                <button disabled={!this.state.courrielValide} onClick={this.seConnecter} className="loginBtn">{btnConnecter}</button>
               </section>
             </div>
           </nav>

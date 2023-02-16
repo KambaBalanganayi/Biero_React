@@ -2,3 +2,27 @@
 .pageActive {
     font-weight: bold;
 }
+
+.boiteLogo{
+    display: flex;
+    flex-direction: row;
+}
+
+.imgLogo{
+
+}
+
+.textLogo{
+    padding: 10px;
+}
+
+.inputCourriel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginBtn{
+    max-width:10rem;
+}

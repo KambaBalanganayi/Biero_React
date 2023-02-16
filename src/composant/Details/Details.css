@@ -1,5 +1,6 @@
 .title{
     padding-left: 10px;
+    padding-top: 100px;
 }
 
 .main{
@@ -17,15 +18,18 @@
     display: flex;
     flex-direction: column;
     padding: 10px 0 0 10px;
+    color: rgb(53, 25, 13);
 }
 
 .description{
     padding-bottom: 20px;
+    color: rgb(53, 25, 13);
 }
 
 .comments{
     display: flex;
     padding: 10px 0 0 10px;
+    color: rgb(53, 25, 13);
 }
 
 .formulaire{
@@ -48,4 +52,71 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+
+@media screen and (max-width: 768px){
+    .title {
+        padding-left: 10px;
+        padding-top: 10px;
+        color: rgb(53, 25, 13);
+    }
+    .comments{
+        display: flex;
+        padding: 10px 0 0 10px;
+        color: rgb(53, 25, 13);
+        flex-direction: column;
+    }
+    
+    .formulaire{
+        padding-top: 20px;
+        margin: 0;
+        display: flex;
+    }
+
+    .rating{
+        padding-top: 20px;
+        padding-bottom: 50px;
+        margin: 0;
+        display: flex;
+    }
+
+}
+
+@media screen and (max-width: 360px){
+
+    .title {
+        padding-left: 10px;
+        padding-top: 100px;
+        color: rgb(53, 25, 13);
+    }
+
+    .main{
+        display: flex;
+        flex-direction:column;
+        padding: 0;
+    }
+    
+    .comments{
+        display: flex;
+        padding: 10px 0 0 10px;
+        color: rgb(53, 25, 13);
+        flex-direction: column;
+    }
+    .commentForm{
+        display: flex;
+    }
+
+    .formulaire{
+        padding-top: 20px;
+        margin: 0;
+        display: flex;
+    }
+    
+    .rating{
+        padding-top: 20px;
+        padding-bottom: 50px;
+        margin: 0;
+        display: flex;
+    }
 }

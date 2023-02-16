@@ -2,6 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Accueil.css';
+import taps from "./img/taps.jpg";
+
 
 export default class Accueil extends React.Component {
     constructor(props){
@@ -14,19 +16,25 @@ export default class Accueil extends React.Component {
             <div className="pageAccueil">
 				<div className="contenu">
 					<div className="bandeau">
-						<a href="/produit" className="btnAction">Notre sélection de produit</a>
+                        <img src={taps} className="imgBandeau"/>
 					</div>
-					<div className="arguments">
-						<div>Argument 1 : (à compléter) 
-                            <p>Pourquoi utiliser notre application?</p><p>Lorem ipsum...</p>
+				
+                        <div className='galleryBtn'>
+                            <a href="/produit" className="btnAction"><button>Notre sélection de produit</button></a>
                         </div>
-						<div>Argument 2 : (à compléter) 
-                            <p>Pourquoi utiliser notre application?</p><p>Lorem ipsum...</p>
-                        </div>
-						<div>Argument 3 : (à compléter) 
-                            <p>Pourquoi utiliser notre application?</p><p>Lorem ipsum...</p>
+                        <div className="arguments">
+
+                            <div className="argument"><b>Decouvrer de nouvelles bieres</b>
+                                <p className='raison'>De nouvelles bieres ajoutés tout les jours!</p>
                             </div>
-					</div>
+                            <div className="argument"><b>Partager vos commentaires</b>
+                                <p className='raison'>Une communauté vivante!</p>
+                            </div>
+                            <div className="argument"><b>Notez les bières</b>
+                                <p className='raison'>Filtrer parmis les bieres les mieux cotés</p>
+                            </div>
+                        </div>
+			
 				</div>
 			</div>
         );
