@@ -1,6 +1,10 @@
-# Installation des dépendances 
-Après le `git clone`, faire `npm install` pour installer les dépendances
+# Clone of UNTAPPD application 
 
-### Pour lancer le serveur de développement
-`npm start`
+Created a clone of the popular application UNTAPPD using `PHP` as a backend server with `REACT` as a frontend framework to simplify page reloads and database updates in real time.
+
+Technologies used `JavaScript`, `HTML`, `CSS`, `Node.JS`
+
+### Plans to add an administrative application to manage the backend database manipulations as a Super User.
+
+Will use `Angular` and `Material Design`
 
